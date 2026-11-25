@@ -399,3 +399,96 @@ input[type=color]{padding:3px;height:44px;min-height:44px}
 #toast button{border:0;background:transparent;color:inherit;font-weight:800;font-size:.92rem;padding:6px 2px;text-decoration:underline;text-underline-offset:3px}
 .fold .fold{box-shadow:none;border:1px solid var(--line);margin-bottom:8px}
 .fold .fold:last-child{margin-bottom:0}
+
+/* ---------- v4.1 colour: 70% neutral · 20% structure · 10% accent ----------
+   Neutral: page, header, cards. Structure: greys, lines, data colours (spent/saved/left, categories).
+   Accent (teal): only the main action, the + button, selected states and links. */
+:root{--amber:#8a5300;--top:var(--bg);--top-ink:var(--text)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--top:var(--bg);--top-ink:var(--text);--amber:#fbbf24}}
+:root[data-theme=dark]{--top:var(--bg);--top-ink:var(--text);--amber:#fbbf24}
+/* header: neutral, not a colour band */
+.top{border-bottom:1px solid var(--line)}
+.mnav{background:var(--chip)}
+.tabs button{background:transparent;color:var(--muted)}
+.tabs{background:var(--chip);border-radius:14px;padding:4px;margin:0 auto 8px;max-width:540px;width:calc(100% - 20px)}
+.tabs button[aria-selected=true]{background:var(--card);color:var(--text);box-shadow:var(--shadow)}
+/* type switch: no big colour fills — icon carries the colour, pressed tile carries the state */
+.typeseg button[aria-pressed=true],.typeseg button[aria-pressed=true][data-k]{background:var(--card);color:var(--text);box-shadow:var(--shadow)}
+.typeseg button[data-k=expense] .i{color:var(--spent)}
+.typeseg button[data-k=income] .i{color:var(--green)}
+.typeseg button[data-k=savings] .i{color:var(--saved)}
+/* icon tiles: neutral square, coloured glyph only */
+.ico{background:var(--chip)}
+.ico svg,.ico .i{color:var(--ic)}
+/* chips & buttons: fill instead of borders; selection = outline shape + bold, not colour alone */
+.chip{border-color:transparent;background:var(--chip)}
+.chip[aria-pressed=true]{border-color:var(--brand);background:var(--card)}
+.chip.quick{border:1.5px dashed var(--line);background:transparent}
+.btn{border-color:transparent;background:var(--chip)}
+.btn.pri{border-color:var(--brand)}
+.billpill{background:var(--chip)}
+.ctile[aria-pressed=true],.ptile[aria-pressed=true],.ftile[aria-pressed=true]{background:var(--card)}
+/* status keeps its own colours; they always come with an icon + word */
+.badge.late{display:inline-flex;align-items:center;gap:4px;background:var(--soft-red);color:var(--red)}
+.badge.late .i{width:14px;height:14px}
+.rowi.late .grow b{color:var(--red)}
+.rowtap{flex:1;min-width:0;display:flex;align-items:center;gap:10px;border:0;background:transparent;padding:0;text-align:left;color:inherit;min-height:44px}
+.rowtap:disabled{cursor:default;opacity:1}
+.rowi .amt small{display:block;text-align:right;font-size:.7rem}
+.skipline{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 2px}
+.skipline .pill{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
+.skipline .i{width:14px;height:14px}
+.skipline .tbtn{min-height:28px;padding:0 4px}
+.chip{background:var(--card);box-shadow:var(--shadow)}
+.card .chip,.sheet .chip{background:var(--chip);box-shadow:none}
+.chip[aria-pressed=true],.card .chip[aria-pressed=true]{background:var(--card)}
+.chip.quick{box-shadow:none}
+.bnum{background:var(--chip)}.bnum b{color:var(--text)}.bnum span{color:var(--muted)}
+
+/* ---------- v4.2 palette: 60 beige · 30 forest green · 10 caramel ----------
+   60  --bg / --card      page and cards (neutral beige family)
+   30  --sec / --top      header, bottom bar, summary heroes (forest green)
+   10  --brand            things you tap: + button, Save, Pay, selected, links (caramel)
+   Status colours (green/amber/red) always come with an icon or word. */
+:root{
+  --bg:#dad0c4;--card:#f6f1ea;--text:#1d2620;--muted:#574f46;--line:#cdc2b4;--track:#e4dacd;--chip:#ece4d9;
+  --sec:#2f3f35;--sec-ink:#f2ece3;--sec-muted:#c3c9bf;--top:#2f3f35;--top-ink:#f2ece3;
+  --brand:#8c6a45;--brand-d:#6e5133;--brand-soft:#eadbc8;--brand-ink:#ffffff;
+  --green:#2f6b3f;--amber:#8a5a00;--red:#a8382a;--spent:#c45a32;--saved:#3b7f72;--billc:#6b7f8e;
+  --soft-green:#dbe8d6;--soft-amber:#f1e3c4;--soft-red:#f3d9d2;
+  --shadow:0 1px 2px rgba(40,30,20,.07),0 2px 10px rgba(40,30,20,.05);--focus:#1f5fbf;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#111613;--card:#1a211d;--text:#ede6dc;--muted:#aeb3aa;--line:#2b3530;--track:#26302b;--chip:#232c27;
+  --sec:#26352c;--sec-ink:#efe8dd;--sec-muted:#b8c0b5;--top:#26352c;--top-ink:#efe8dd;
+  --brand:#c9a27a;--brand-d:#d9b893;--brand-soft:#3a2f23;--brand-ink:#1e160d;
+  --green:#7cc488;--amber:#e9bd62;--red:#ef8e7d;--spent:#e58a5f;--saved:#6cb8a8;--billc:#9fb2c0;
+  --soft-green:#1c3122;--soft-amber:#3a2e14;--soft-red:#3d1f1a;--shadow:none}}
+:root[data-theme=dark]{
+  --bg:#111613;--card:#1a211d;--text:#ede6dc;--muted:#aeb3aa;--line:#2b3530;--track:#26302b;--chip:#232c27;
+  --sec:#26352c;--sec-ink:#efe8dd;--sec-muted:#b8c0b5;--top:#26352c;--top-ink:#efe8dd;
+  --brand:#c9a27a;--brand-d:#d9b893;--brand-soft:#3a2f23;--brand-ink:#1e160d;
+  --green:#7cc488;--amber:#e9bd62;--red:#ef8e7d;--spent:#e58a5f;--saved:#6cb8a8;--billc:#9fb2c0;
+  --soft-green:#1c3122;--soft-amber:#3a2e14;--soft-red:#3d1f1a;--shadow:none}
+
+/* 30%: header, tabs, bottom bar */
+.top{background:var(--top);color:var(--top-ink);border-bottom:0}
+.mnav{background:rgba(255,255,255,.12)}
+.icbtn .dot{border-color:var(--top)}
+.tabs{background:rgba(255,255,255,.1)}
+.tabs button{color:var(--sec-muted)}
+.tabs button[aria-selected=true]{background:var(--card);color:var(--text)}
+.nav{background:var(--sec);border-top:0}
+.nav button{color:var(--sec-muted)}
+.nav button[aria-current=page]{color:var(--brand)}
+:root[data-theme=light] .nav button[aria-current=page],.nav button[aria-current=page]{color:#e0bf98}
+.fab{box-shadow:0 6px 16px rgba(60,40,20,.35)}
+.nav button[aria-current=page] .fab{box-shadow:0 0 0 4px rgba(224,191,152,.35),0 6px 16px rgba(60,40,20,.35)}
+/* 30%: summary heroes — local tokens so everything inside stays readable */
+.hero,.hero2{background:var(--sec);border:0;
+  --text:var(--sec-ink);--muted:var(--sec-muted);--track:rgba(255,255,255,.16);--chip:rgba(255,255,255,.1);--line:rgba(255,255,255,.14);
+  --green:#93d39c;--amber:#f0c86f;--red:#f3a090;--soft-green:rgba(147,211,156,.16);--soft-amber:rgba(240,200,111,.16);--soft-red:rgba(243,160,144,.16);
+  color:var(--sec-ink)}
+.hero .bnum{background:rgba(255,255,255,.1)}
+/* theme toggle */
+.thm .i{width:22px;height:22px}
