@@ -2,8 +2,8 @@
    The app shell is cached so it opens with no internet. Your data itself lives
    in the phone's storage (and in Google Sheets when sync is on), not here.
    When you upload a new version of the app, change CACHE (v1 → v2) so phones pick it up. */
-const CACHE = 'family-budget-v1';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './chart.umd.js',
+const CACHE = 'family-budget-v3';
+const ASSETS = ['./', './index.html', './app.js', './app.css', './manifest.webmanifest', './chart.umd.js',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
